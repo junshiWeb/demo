@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手风晴</title>
+  <script src="../jquery.min.js"></script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .king {
+      background: url(./images/bg.png) no-repeat;
+      width: 852px;
+      height: 69px;
+      margin: 100px auto;
+      overflow: hidden;
+      padding: 10px;
+    }
+
+    .content {
+      width: 852px;
+      height: 69px;
+      overflow: hidden;
+    }
+
+    a {
+      position: relative;
+      display: block;
+      float: left;
+      width: 69px;
+      height: 69px;
+      margin-right: 10px;
+      overflow: hidden;
+    }
+
+    a.current {
+      width: 224px;
+    }
+
+    a.current .big {
+      display: block;
+    }
+
+    a.current .small {
+      display: none;
+    }
+
+    .big {
+      display: none;
+      width: 224px;
+    }
+
+    .small {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 69px;
+      height: 69px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="king">
+    <div class="content">
+      <a href="#" class="current">
+        <img class="big" src="./images/m.png" alt="">
+        <img class="small" src="./images/m1.jpg" alt="">
+      </a>
+      <a href="#">
+        <img class="big" src="./images/c.png" alt="">
+        <img class="small" src="./images/c1.jpg" alt="">
+      </a>
+      <a href="#">
+        <img class="big" src="./images/h.png" alt="">
+        <img class="small" src="./images/h1.jpg" alt="">
+      </a>
+      <a href="#">
+        <img class="big" src="./images/l.png" alt="">
+        <img class="small" src="./images/l1.jpg" alt="">
+      </a>
+      <a href="#">
+        <img class="big" src="./images/t.png" alt="">
+        <img class="small" src="./images/t1.jpg" alt="">
+      </a>
+      <a href="#">
+        <img class="big" src="./images/w.png" alt="">
+        <img class="small" src="./images/w1.jpg" alt="">
+      </a>
+      <a href="#">
+        <img class="big" src="./images/z.png" alt="">
+        <img class="small" src="./images/z1.jpg" alt="">
+      </a>
+    </div>
+  </div>
+  <script>
+    $(function () {
+      //非常垃圾的手風琴
+      // $("a").hover(
+      //   function () {
+      //     $(this).animate({ width: 224 }).children(".big").stop().show().siblings(".small").stop().hide()
+      //   },
+      //   function () {
+      //     $(this).animate({ width: 69 }).children(".big").stop().hide().siblings(".small").stop().show()
+      //   }
+      // )
+      // 鼠标经过某个图标
+        $("a").mouseenter(function () {
+          // 1.当前元素宽度拉伸，大图片淡入，小图片淡出
+          $(this).stop().animate({width: 224}).find(".small").stop().fadeOut().siblings().stop().fadeIn()
+          // 2.当前元素的兄弟元素缩小，大图片淡出，小图片淡入
+          $(this).siblings("a").stop().animate({width: 69}).find(".small").stop().fadeIn().find(".big").stop().fadeOut()
+        })
+    })
+  </script>
+</body>
+
+</html>
